@@ -2,6 +2,16 @@
 
 **💸 [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/ai-ml-portfolio-demos)** — route a prompt and see the savings vs frontier-only.
 
+## 🧠 In plain English
+
+**The problem:** there are cheap, fast AI models and expensive, smart ones (often 20× the price). Most apps lazily send *everything* to the expensive one — even trivial questions. That's taking a taxi to your mailbox.
+
+**The fix (analogy):** a help-desk dispatcher. Easy questions go to a junior agent (cheap); hard ones to a senior (expensive). If the junior gives a weak answer, the dispatcher escalates it.
+
+**How it works:** a quick classifier rates each request's difficulty → it routes to the **cheapest model that can handle it** → optionally checks the answer and **escalates once** if it's weak → reports what was spent vs what always-expensive would have cost.
+
+**Why it's honest:** when it escalates, it counts the cost of *both* calls (the failed cheap one and the retry), so the savings number is never flattering. Typically cuts **40–60%** of spend with no quality loss on the easy stuff. Ships as a drop-in proxy — change one URL.
+
 Routes each request to the **cheapest model that can satisfy it**, cutting LLM
 spend 40–60% vs always calling a frontier model. Complexity classification →
 tiered routing → optional verify-and-escalate → honest savings telemetry. Ships
