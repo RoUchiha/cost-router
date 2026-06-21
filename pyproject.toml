@@ -1,0 +1,52 @@
+[project]
+name = "costrouter"
+version = "0.1.0"
+description = "Routes each LLM request to the cheapest model that can satisfy it — 40-60% spend cut."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "typer>=0.12",
+    "rich>=13",
+    "loguru>=0.7",
+    "pyyaml>=6",
+    "tiktoken>=0.7",
+    "fastapi>=0.110",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5",
+    "respx>=0.21",
+    "ruff>=0.6",
+]
+demo = ["gradio>=4", "pandas>=2"]
+server = ["uvicorn>=0.30"]
+
+[project.scripts]
+costrouter = "costrouter.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/costrouter"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["src/costrouter"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
