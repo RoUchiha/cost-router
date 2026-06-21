@@ -1,6 +1,6 @@
 # costrouter — LLM Cost Router
 
-**💸 [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/cost-router)** — route a prompt and see the savings vs frontier-only.
+**💸 [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/ai-ml-portfolio-demos)** — route a prompt and see the savings vs frontier-only.
 
 Routes each request to the **cheapest model that can satisfy it**, cutting LLM
 spend 40–60% vs always calling a frontier model. Complexity classification →
